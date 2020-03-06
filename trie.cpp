@@ -57,6 +57,25 @@ class trie{
 		return current->isWord;
 	}
 
+	void allStringsUtil(string word, trieNode* node){
+
+		if(node->isWord)	cout<<word<<endl;
+
+		
+		for (auto it=node->children.begin();it!=node->children.end();++it)
+		{
+			
+			allStringsUtil(word + (it->first) , it->second );
+
+		}
+	}
+
+	void allStrings(){
+		
+		allStringsUtil("",root);
+	}
+
+
 
 };
 
@@ -64,9 +83,15 @@ int main(){
 	
 	trie *t = new trie();
 	
-	if(t->insert("hello")) cout<<"sting inserted"<<endl;
-	if(t->search("hello")) cout<<"hello found"<<endl;
+	t->insert("hola");
+	t->insert("is");
+	t->insert("nikhil");
+	t->insert("nikhilllll");
+	t->insert("isa");
+	
 
-	return 0;
+	t->allStrings();
+
+	
 
 }
